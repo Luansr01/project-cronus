@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xanlg4pmc8r7" path="res://keys.tscn" id="5_6t8i5"]
 [ext_resource type="PackedScene" uid="uid://bn4g5xx7o851n" path="res://timeline.tscn" id="6_dw4jg"]
 [ext_resource type="Texture2D" uid="uid://coogblbjnebnl" path="res://art/knight_idle.png" id="7_0npn6"]
-[ext_resource type="Script" path="res://hero.gd" id="8_lcjiy"]
+[ext_resource type="Script" uid="uid://cvw3wossls4k7" path="res://hero.gd" id="8_lcjiy"]
 [ext_resource type="PackedScene" uid="uid://b64k466520khm" path="res://slime.tscn" id="8_mhv3b"]
 
 [sub_resource type="Animation" id="Animation_mhv3b"]

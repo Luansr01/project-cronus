@@ -293,7 +293,7 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 autostart = true
 
 [connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]

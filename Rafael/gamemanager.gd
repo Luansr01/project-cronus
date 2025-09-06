@@ -4,11 +4,22 @@ var enemy_prefab_agua = preload("res://slime_agua.tscn")
 var enemy_prefab_fogo = preload("res://slime_fogo.tscn")
 var enemy_prefab_grama = preload("res://slime_grama.tscn")
 
+var icon_fire_texture = preload("res://art/icon_fire.png")
+var icon_water_texture = preload("res://art/icon_water.png")
+var icon_grass_texture = preload("res://art/icon_grass.png")
+
 var targeted_enemy : Enemy:
 	set(x):
 		targeted_enemy = x
 		if targeted_enemy != null:
 			crosshair.position.x = targeted_enemy.position.x - crosshair.size.x/2
+			if targeted_enemy.enemy_type == Elementos.Elems.Água:
+				crosshair.texture = icon_water_texture
+			elif  targeted_enemy.enemy_type == Elementos.Elems.Grama:
+				crosshair.texture = icon_grass_texture
+			elif targeted_enemy.enemy_type == Elementos.Elems.Fogo:
+				crosshair.texture = icon_fire_texture
+			
 		else:
 			crosshair.position.x = 10000000000
 var enemies = []

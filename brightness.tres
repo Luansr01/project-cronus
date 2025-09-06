@@ -4,6 +4,8 @@
 
 [resource]
 shader = ExtResource("1_8h4yy")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/blink_color = Color(1, 1, 1, 1)
-shader_parameter/blink_time_scale = 0.0
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 2.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=37 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="18_s5g7e"]
 [ext_resource type="AudioStream" uid="uid://dbosjhs0ajxt8" path="res://art/hitHurt.wav" id="24_j128n"]
 [ext_resource type="AudioStream" uid="uid://c3rq6uox6gj8h" path="res://art/hitHurt (1).wav" id="25_nt5qs"]
+[ext_resource type="Material" uid="uid://dnx6u2h4uk8pb" path="res://brightness.tres" id="25_v7t3w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fljlq"]
 bg_color = Color(0.301961, 0.65098, 1, 1)
@@ -304,6 +305,7 @@ bus = &"SFX"
 position = Vector2(574, 326)
 
 [node name="Crosshair" type="TextureRect" parent="."]
+material = ExtResource("25_v7t3w")
 offset_left = 609.0
 offset_top = 164.0
 offset_right = 649.0

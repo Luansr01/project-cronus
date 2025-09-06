@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://66epj0pbkpk2"]
+[gd_scene load_steps=12 format=4 uid="uid://66epj0pbkpk2"]
 
 [ext_resource type="Texture2D" uid="uid://dhrwyh5stuh7h" path="res://art/tileset.png" id="1_nsmjb"]
 [ext_resource type="Script" path="res://Scripts/sky.gd" id="2_nsmjb"]
+[ext_resource type="Shader" uid="uid://dssa8kvyv2o3k" path="res://wind.gdshader" id="3_3qqdj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsmjb"]
 texture = ExtResource("1_nsmjb")
@@ -19,6 +20,18 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_3qqdj"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_nsmjb")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3qqdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqtar"]
+shader = ExtResource("3_3qqdj")
+shader_parameter/render_noise = false
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_3qqdj")
+shader_parameter/amplitude = 0.05
+shader_parameter/time_scale = 0.19
+shader_parameter/noise_scale = 0.001
+shader_parameter/rotation_strength = 1.0
+shader_parameter/rotation_pivot = Vector2(0.5, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1i3gi"]
 texture = ExtResource("1_nsmjb")
@@ -90,6 +103,7 @@ tile_set = SubResource("TileSet_3qqdj")
 script = ExtResource("2_nsmjb")
 
 [node name="Background" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_dqtar")
 position = Vector2(2, -54)
 tile_map_data = PackedByteArray("AAD7////AAACAAIAAAD9////AAACAAIAAAABAP//AAACAAIAAAADAP//AAACAAIAAAAFAP//AAACAAIAAAD/////AAABAAIAAAABAP7/AAABAAIAAAD+////AAABAAIAAAD8////AAABAAIAAAAEAP//AAABAAIAAAD9//7/AAABAAIAAAD8//7/AAABAAIAAAD///7/AAABAAIAAAAFAP7/AAABAAIAAAADAP7/AAABAAIAAAACAP//AAAAAAIAAAAAAP//AAAAAAIAAAD+//7/AAAAAAIAAAD///3/AAAAAAIAAAD9//3/AAAAAAIAAAD8//3/AAAAAAIAAAD7//7/AAAAAAIAAAABAP3/AAAAAAIAAAADAP3/AAAAAAIAAAAEAP7/AAAAAAIAAAAFAP3/AAAAAAIAAAA=")
 tile_set = SubResource("TileSet_nsmjb")

@@ -22,3 +22,5 @@ texture_progress = ExtResource("3_ues5n")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.444
 one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

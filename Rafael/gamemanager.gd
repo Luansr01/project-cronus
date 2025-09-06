@@ -8,6 +8,9 @@ var icon_fire_texture = preload("res://art/icon_fire.png")
 var icon_water_texture = preload("res://art/icon_water.png")
 var icon_grass_texture = preload("res://art/icon_grass.png")
 
+@onready var score_text : RichTextLabel = $UI/Score
+var score = 0
+
 var targeted_enemy : Enemy:
 	set(x):
 		targeted_enemy = x
@@ -68,6 +71,7 @@ func spawn_slimes(ammount : int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	score = 0
 	
 	crosshair = get_node("Crosshair")
 	UI = get_node("UI")
@@ -89,6 +93,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if targeted_enemy == null and not enemies.is_empty():
 		targeted_enemy = enemies[-1]
+		
+	score_text.score = score
+	Score.score = score
 
 func _input(event: InputEvent) -> void:
 	var attack_input = null
@@ -199,6 +206,7 @@ class AttackPattern:
 
 func _on_slime_enemy_died(enemy: Variant) -> void:
 		UI.add_time(10)
+		score += 10
 		enemies.erase(enemy)
 		if not enemies.is_empty():
 			targeted_enemy = enemies[-1]

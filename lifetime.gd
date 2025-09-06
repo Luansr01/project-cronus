@@ -29,4 +29,3 @@ func _ready():
 
 func _process(delta):
 	current_time = timer.time_left
-	print(current_time)

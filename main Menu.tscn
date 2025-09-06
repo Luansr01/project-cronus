@@ -78,6 +78,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lje46")
 text = "Iniciar Jogo"
 
 [node name="Tutorial" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_7ci51")

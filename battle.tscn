@@ -133,4 +133,4 @@ autoplay = "Idle"
 
 [node name="Slime" parent="." instance=ExtResource("8_mhv3b")]
 position = Vector2(380, 305)
-total_life = 500.0
+total_life = 10.0

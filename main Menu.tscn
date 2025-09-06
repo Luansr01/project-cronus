@@ -123,6 +123,7 @@ script = ExtResource("1_qfarh")
 
 [node name="TextureRect" type="Panel" parent="."]
 z_index = -185
+layout_mode = 0
 offset_top = 2.0
 offset_right = 1150.0
 offset_bottom = 755.0

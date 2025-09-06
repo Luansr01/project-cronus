@@ -127,7 +127,8 @@ func _input(event: InputEvent) -> void:
 		if att_patt_defesa.play_attack_pattern(attack_input):
 			player_defendendo = true	
 			Hero.defend()
-			print("Defesa!")
+			player_attack_sfx.play()
+
 		
 			
 			

@@ -4,6 +4,7 @@ signal player_got_hit(damage)
 
 @export var strength : int
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var p_layer_defend_sfx: AudioStreamPlayer = $"../Sound Effects/PLayer Defend SFX"
 
 
 const ATTACK_ANIMATION_1 = preload("res://attack_animation1.tscn")
@@ -67,6 +68,8 @@ func hit(damage):
 		await get_tree().create_timer(0.1).timeout
 		animated_sprite_2d.material.set("shader_parameter/is_flashing", false)
 		animated_sprite_2d.play("default")
+	else:
+		p_layer_defend_sfx.play()
 		
 	
 func defend():

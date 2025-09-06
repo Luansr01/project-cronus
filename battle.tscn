@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=43 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://dbosjhs0ajxt8" path="res://art/hitHurt.wav" id="24_j128n"]
 [ext_resource type="AudioStream" uid="uid://c3rq6uox6gj8h" path="res://art/hitHurt (1).wav" id="25_nt5qs"]
 [ext_resource type="Material" uid="uid://dnx6u2h4uk8pb" path="res://brightness.tres" id="25_v7t3w"]
+[ext_resource type="AudioStream" uid="uid://d2c2a2esm2kan" path="res://random.wav" id="26_in21c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fljlq"]
 bg_color = Color(0.301961, 0.65098, 1, 1)
@@ -332,9 +333,14 @@ bus = &"SFX"
 
 [node name="Player Input SFX New" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("13_ix8ov")
+volume_db = 1.874
 
 [node name="Player Get Hit SFX" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("25_nt5qs")
+bus = &"SFX"
+
+[node name="PLayer Defend SFX" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("26_in21c")
 bus = &"SFX"
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://djqkv15x1yodb"]
+[gd_scene load_steps=3 format=3 uid="uid://djqkv15x1yodb"]
+
+[ext_resource type="FontFile" uid="uid://pm57o4jaqrxi" path="res://PixelifySans-VariableFont_wght.ttf" id="1_y26ei"]
+[ext_resource type="Script" uid="uid://cmm8x6o1tq1p5" path="res://game_over_text.gd" id="2_yxx3c"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -8,10 +11,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 560.0
-offset_top = 200.0
-offset_right = 647.0
-offset_bottom = 223.0
+offset_right = 1152.0
+offset_bottom = 656.0
+color = Color(0, 0, 0, 1)
+
+[node name="Game_Over" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 1152.0
+offset_bottom = 240.0
+theme_override_fonts/normal_font = ExtResource("1_y26ei")
+theme_override_font_sizes/normal_font_size = 106
 text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_yxx3c")
+
+[node name="Timer" type="Timer" parent="Game_Over"]
+autostart = true
+
+[node name="Dialogue" type="RichTextLabel" parent="."]
+offset_top = 320.0
+offset_right = 1152.0
+offset_bottom = 448.0
+theme_override_fonts/normal_font = ExtResource("1_y26ei")
+theme_override_font_sizes/normal_font_size = 31
+text = "Pressione Qualquer Tecla"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Game_Over/Timer" to="Game_Over" method="_on_timer_timeout"]

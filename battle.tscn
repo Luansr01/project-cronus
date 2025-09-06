@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlciqwi2nw5fi"]
+
+[ext_resource type="Script" uid="uid://be202nx5qhxcj" path="res://lifetime.gd" id="1_oxp8w"]
+[ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_oxp8w")
+
+[node name="Lifetime" parent="." instance=ExtResource("2_7sfm4")]

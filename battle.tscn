@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=19 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -7,8 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://xanlg4pmc8r7" path="res://keys.tscn" id="5_6t8i5"]
 [ext_resource type="PackedScene" uid="uid://bn4g5xx7o851n" path="res://timeline.tscn" id="6_dw4jg"]
 [ext_resource type="Texture2D" uid="uid://coogblbjnebnl" path="res://art/knight_idle.png" id="7_0npn6"]
-[ext_resource type="Script" uid="uid://cvw3wossls4k7" path="res://hero.gd" id="8_lcjiy"]
+[ext_resource type="Script" path="res://hero.gd" id="8_lcjiy"]
 [ext_resource type="PackedScene" uid="uid://b64k466520khm" path="res://slime.tscn" id="8_mhv3b"]
+[ext_resource type="AudioStream" uid="uid://b4fy7r6jn6pg3" path="res://art/sfx1.wav" id="10_4s0ev"]
+[ext_resource type="AudioStream" uid="uid://pdnedxqsivpq" path="res://art/sfx2.wav" id="11_pihy1"]
+[ext_resource type="AudioStream" uid="uid://bk08bmkmedcjw" path="res://art/sfx3.wav" id="12_slotg"]
+[ext_resource type="AudioStream" uid="uid://tu0h26w2xc3m" path="res://art/sfx4.wav" id="13_ix8ov"]
+[ext_resource type="AudioStream" uid="uid://bqtdm2eh2lc2j" path="res://art/sfx5.wav" id="14_4s0ev"]
 
 [sub_resource type="Animation" id="Animation_mhv3b"]
 resource_name = "Idle"
@@ -46,6 +51,13 @@ _data = {
 &"Idle": SubResource("Animation_mhv3b"),
 &"RESET": SubResource("Animation_lcjiy")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ol6im"]
+streams_count = 4
+stream_0/stream = ExtResource("10_4s0ev")
+stream_1/stream = ExtResource("11_pihy1")
+stream_2/stream = ExtResource("12_slotg")
+stream_3/stream = ExtResource("13_ix8ov")
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_7sfm4")
@@ -139,3 +151,17 @@ total_life = 10.0
 [node name="Slime2" parent="." instance=ExtResource("8_mhv3b")]
 position = Vector2(905, 180)
 total_life = 10.0
+position = Vector2(380, 305)
+total_life = 10000.0
+
+[node name="Sound Effects" type="Node" parent="."]
+
+[node name="Player Input SFX" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = SubResource("AudioStreamRandomizer_ol6im")
+volume_db = 5.902
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="Player Attack SFX" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("14_4s0ev")
+bus = &"SFX"

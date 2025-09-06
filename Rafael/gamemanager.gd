@@ -19,8 +19,10 @@ var att_patt_agua : AttackPattern
 var att_patt_fogo : AttackPattern
 var att_patt_grama : AttackPattern
 
-
 var Hero : Sprite2D
+
+@onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
+@onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,27 +51,34 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up"):
 		attack_input = 0
 		UI.press_key("up")
+		player_input_sfx.play()		
 	elif event.is_action_pressed("down"):
 		attack_input = 2
 		UI.press_key("down")
+		player_input_sfx.play()
 	elif event.is_action_pressed("left"):
 		attack_input = 1
 		UI.press_key("left")
+		player_input_sfx.play()
 	elif event.is_action_pressed("right"):
 		attack_input = 3
 		UI.press_key("right")
+		player_input_sfx.play()
 		
 	
 	if attack_input != null and targeted_enemy != null:
 		if att_patt_agua.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Água)
 			UI.add_time(1)
+			player_attack_sfx.play()
 		if att_patt_fogo.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Fogo)
 			UI.add_time(1)
+			player_attack_sfx.play()
 		if att_patt_grama.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Grama)
 			UI.add_time(1)
+			player_attack_sfx.play()
 		
 class AttackPattern:
 	var attack_array : Array = []

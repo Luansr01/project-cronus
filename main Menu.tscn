@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4l658m03rqxg"]
+
+[ext_resource type="FontFile" uid="uid://pm57o4jaqrxi" path="res://PixelifySans-VariableFont_wght.ttf" id="1_7ci51"]
+[ext_resource type="Texture2D" uid="uid://ja8fwvrnddcq" path="res://background.jpg" id="1_lje46"]
+[ext_resource type="Script" uid="uid://b888k7kejn7dm" path="res://main_menu.gd" id="1_qfarh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qfarh"]
+texture = ExtResource("1_lje46")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lje46"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfarh"]
+bg_color = Color(2.67126e-06, 0.39448, 0.3418, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43fa7"]
+bg_color = Color(1.75677e-06, 0.335074, 0.289357, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lje46"]
+bg_color = Color(2.21401e-06, 0.516493, 0.449513, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 6
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qfarh")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_qfarh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -125.0
+offset_right = 177.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_7ci51")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lje46")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qfarh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_43fa7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lje46")
+text = "Iniciar Jogo"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_7ci51")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lje46")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qfarh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_43fa7")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lje46")
+text = "Sair do Jogo"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -245.0
+offset_right = 54.5
+offset_bottom = -222.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("1_7ci51")
+theme_override_font_sizes/font_size = 72
+text = "Projeto Chornos"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

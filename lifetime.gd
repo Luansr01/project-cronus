@@ -18,6 +18,9 @@ var current_time : float:
 func set_time(v):
 	timer.start(clamp(v, 0, max_time))
 	
+func add_time(v):
+	timer.start(clamp(timer.time_left + v, 0, max_time))
+
 func _ready():
 	timer = get_node("Timer")
 	bar = get_node("LifetimeBar")

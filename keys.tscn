@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://xanlg4pmc8r7"]
+
+[ext_resource type="Script" uid="uid://cfqxmi6dfvxgy" path="res://keys.gd" id="1_eqmi2"]
+
+[node name="Keys" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eqmi2")
+
+[node name="Up" type="Label" parent="."]
+offset_left = 193.0
+offset_top = 484.0
+offset_right = 280.0
+offset_bottom = 507.0
+text = "up"
+
+[node name="Down" type="Label" parent="."]
+offset_left = 185.0
+offset_top = 539.0
+offset_right = 272.0
+offset_bottom = 562.0
+text = "down"
+
+[node name="Left" type="Label" parent="."]
+offset_left = 157.0
+offset_top = 509.0
+offset_right = 244.0
+offset_bottom = 532.0
+text = "left"
+
+[node name="Right" type="Label" parent="."]
+offset_left = 228.0
+offset_top = 509.0
+offset_right = 315.0
+offset_bottom = 532.0
+text = "right"

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn4g5xx7o851n"]
+
+[ext_resource type="Script" uid="uid://ibquqyywkdbi" path="res://timeline.gd" id="1_3127u"]
+[ext_resource type="Texture2D" uid="uid://lht50rrymmh4" path="res://icon.svg" id="2_18enc"]
+
+[node name="Timeline" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3127u")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 228.0
+offset_bottom = 128.0
+pivot_offset = Vector2(64, 64)
+texture = ExtResource("2_18enc")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

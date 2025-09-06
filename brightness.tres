@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dnx6u2h4uk8pb"]
+
+[ext_resource type="Shader" uid="uid://ckigt51flek76" path="res://brightness.gdshader" id="1_8h4yy"]
+
+[resource]
+shader = ExtResource("1_8h4yy")

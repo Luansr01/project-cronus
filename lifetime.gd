@@ -19,7 +19,13 @@ func set_time(v):
 	timer.start(clamp(v, 0, max_time))
 	
 func add_time(v):
-	timer.start(clamp(timer.time_left + v, 0, max_time))
+	timer.start(timer.time_left + v)
+
+func sub_time(v):
+	if timer.time_left - v <= 0:
+		pass
+	else:
+		timer.start(timer.time_left - v)
 
 func _ready():
 	timer = get_node("Timer")

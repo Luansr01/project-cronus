@@ -9,6 +9,9 @@ func add_icon_to_timeline(type, parent):
 
 func add_time(x : int):
 	lifetime.add_time(x)
+	
+func sub_time(x : int):
+	lifetime.sub_time(x)
 
 func press_key(key):
 	keys.press_key(key)

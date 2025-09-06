@@ -176,7 +176,7 @@ class AttackPattern:
 				var dir_icon_array = attack_pattern_container.get_children()
 				if dir_icon_array.size() > 0:
 					var curr_dir_icon : TextureRect = dir_icon_array[current_attack_pos]
-					curr_dir_icon.modulate = Color(2, 2, 2)
+					curr_dir_icon.material = load("res://brightness.tres")
 				current_attack_pos += 1
 			else:
 				place_pattern_container()
@@ -204,7 +204,7 @@ func _on_slime_enemy_died(enemy: Variant) -> void:
 		
 
 func _on_hero_player_got_hit(damage: Variant) -> void:
-	UI.add_time(-damage)
+	UI.sub_time(damage)
 	player_get_hit_sfx.play()
 
 

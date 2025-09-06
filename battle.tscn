@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=33 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -14,18 +14,17 @@
 [ext_resource type="Texture2D" uid="uid://dukk2g1sv6qpq" path="res://art/icon_grass.png" id="9_rggsl"]
 [ext_resource type="AudioStream" uid="uid://b4fy7r6jn6pg3" path="res://art/sfx1.wav" id="10_4s0ev"]
 [ext_resource type="Texture2D" uid="uid://u62aklfocr22" path="res://art/knight_icon.png" id="10_rggsl"]
-[ext_resource type="Texture2D" uid="uid://ja8fwvrnddcq" path="res://background.jpg" id="11_fljlq"]
 [ext_resource type="Texture2D" uid="uid://diiew1p287y22" path="res://art/knight_defend.png" id="11_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://pdnedxqsivpq" path="res://art/sfx2.wav" id="11_pihy1"]
 [ext_resource type="AudioStream" uid="uid://bk08bmkmedcjw" path="res://art/sfx3.wav" id="12_slotg"]
 [ext_resource type="AudioStream" uid="uid://tu0h26w2xc3m" path="res://art/sfx4.wav" id="13_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://bqtdm2eh2lc2j" path="res://art/sfx5.wav" id="14_4s0ev"]
-[ext_resource type="Shader" uid="uid://bh7ormae1eqf3" path="res://flash.gdshader" id="14_fljlq"]
-[ext_resource type="PackedScene" uid="uid://66epj0pbkpk2" path="res://tilemap.tscn" id="16_slotg"]
+[ext_resource type="Shader" path="res://flash.gdshader" id="14_fljlq"]
+[ext_resource type="PackedScene" uid="uid://cux01ji6hpkqb" path="res://tilemap.tscn" id="16_slotg"]
 [ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="18_s5g7e"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5g7e"]
-texture = ExtResource("11_fljlq")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fljlq"]
+bg_color = Color(0.301961, 0.65098, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s5g7e"]
 shader = ExtResource("14_fljlq")
@@ -243,11 +242,11 @@ layout_mode = 0
 offset_top = 2.0
 offset_right = 1150.0
 offset_bottom = 755.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_s5g7e")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fljlq")
 
 [node name="Tilemap" parent="." instance=ExtResource("16_slotg")]
 z_index = -7
-position = Vector2(475, 263)
+position = Vector2(488, 488)
 scale = Vector2(4, 4)
 
 [node name="Hero" type="Sprite2D" parent="."]
@@ -277,7 +276,6 @@ stream = ExtResource("14_4s0ev")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 326)
 
-[connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]
 [node name="Crosshair" type="TextureRect" parent="."]
 offset_left = 609.0
 offset_top = 242.0
@@ -286,4 +284,5 @@ offset_bottom = 282.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")
 
+[connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]
 [connection signal="player_got_hit" from="Hero" to="." method="_on_hero_player_got_hit"]

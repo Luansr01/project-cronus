@@ -20,11 +20,8 @@ var rune : Sprite2D
 
 signal has_killed_enemy
 
-<<<<<<< Updated upstream
 var is_defending : bool
 
-=======
->>>>>>> Stashed changes
 func attack(enemy : Enemy, type : Elementos.Elems):
 	if enemy.hit(strength, type):
 		has_killed_enemy.emit()
@@ -58,12 +55,9 @@ func hit(damage):
 		
 	
 func defend():
-<<<<<<< Updated upstream
 	is_defending = true
-=======
 	rune = RUNE_SHIELD.instantiate()
 	add_child(rune)
->>>>>>> Stashed changes
 	animated_sprite_2d.play("defend")
 	await get_tree().create_timer(1.0).timeout
 	animated_sprite_2d.play("default")

@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	var attack_input = -1
+	var attack_input = null
 	if event.is_action_pressed("up"):
 		attack_input = 0
 		UI.press_key("up")
@@ -35,8 +35,9 @@ func _input(event: InputEvent) -> void:
 
 		
 	if current_att_pattern_pos < attack_pattern.size():
-		if attack_input >= 0 and attack_input == attack_pattern[current_att_pattern_pos]:
+		if attack_input != null and attack_input == attack_pattern[current_att_pattern_pos]:
 			current_att_pattern_pos += 1
 	else:
 		print("Ataque!")
+		UI.add_time(1)
 		current_att_pattern_pos = 0

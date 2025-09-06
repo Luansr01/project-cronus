@@ -1,8 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4l658m03rqxg"]
+[gd_scene load_steps=25 format=3 uid="uid://c4l658m03rqxg"]
 
 [ext_resource type="FontFile" uid="uid://pm57o4jaqrxi" path="res://PixelifySans-VariableFont_wght.ttf" id="1_7ci51"]
 [ext_resource type="Texture2D" uid="uid://ja8fwvrnddcq" path="res://background.jpg" id="1_lje46"]
 [ext_resource type="Script" uid="uid://b888k7kejn7dm" path="res://main_menu.gd" id="1_qfarh"]
+[ext_resource type="PackedScene" uid="uid://66epj0pbkpk2" path="res://tilemap.tscn" id="13_3on0i"]
+[ext_resource type="Script" uid="uid://cvw3wossls4k7" path="res://hero.gd" id="14_7na7f"]
+[ext_resource type="Shader" uid="uid://bh7ormae1eqf3" path="res://flash.gdshader" id="15_2ks0k"]
+[ext_resource type="Texture2D" uid="uid://b2ja11dotfd1o" path="res://art/knight_cast.png" id="16_fxyak"]
+[ext_resource type="Texture2D" uid="uid://coogblbjnebnl" path="res://art/knight_idle.png" id="17_ftiwd"]
+[ext_resource type="Texture2D" uid="uid://diiew1p287y22" path="res://art/knight_defend.png" id="18_an7oe"]
+[ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="19_d1prs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3q6m"]
+bg_color = Color(0.301961, 0.65098, 1, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qfarh"]
 texture = ExtResource("1_lje46")
@@ -33,6 +43,75 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 6
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tai30"]
+shader = ExtResource("15_2ks0k")
+shader_parameter/is_flashing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slotg"]
+atlas = ExtResource("16_fxyak")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix8ov"]
+atlas = ExtResource("16_fxyak")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s0ev"]
+atlas = ExtResource("17_ftiwd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pihy1"]
+atlas = ExtResource("17_ftiwd")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx4lf"]
+atlas = ExtResource("18_an7oe")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j128n"]
+atlas = ExtResource("19_d1prs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7b7uo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slotg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix8ov")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pihy1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx4lf")
+}],
+"loop": true,
+"name": &"defend",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j128n")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -42,7 +121,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qfarh")
 
+[node name="TextureRect" type="Panel" parent="."]
+z_index = -185
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 755.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_r3q6m")
+
 [node name="Panel" type="Panel" parent="."]
+visible = false
+z_index = -1000
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +140,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qfarh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 36
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,6 +156,7 @@ grow_vertical = 2
 theme_override_constants/separation = 32
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+z_index = 36
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_7ci51")
@@ -79,6 +169,7 @@ text = "Iniciar Jogo"
 
 [node name="Tutorial" type="Button" parent="VBoxContainer"]
 visible = false
+z_index = 36
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_7ci51")
@@ -90,6 +181,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lje46")
 text = "Tutorial"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
+z_index = 36
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_7ci51")
@@ -119,7 +211,26 @@ theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_fonts/font = ExtResource("1_7ci51")
 theme_override_font_sizes/font_size = 72
-text = "Projeto Chornos"
+text = "The Legend of Carlos"
+
+[node name="Tilemap" parent="." instance=ExtResource("13_3on0i")]
+z_index = -7
+position = Vector2(488, 488)
+scale = Vector2(4, 4)
+
+[node name="Hero" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(234, 278)
+scale = Vector2(4, 4)
+vframes = 2
+script = ExtResource("14_7na7f")
+strength = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero"]
+material = SubResource("ShaderMaterial_tai30")
+sprite_frames = SubResource("SpriteFrames_7b7uo")
+animation = &"hit"
+autoplay = "default"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_pressed"]

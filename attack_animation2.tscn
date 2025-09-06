@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d26rcox3xh558"]
+[gd_scene load_steps=8 format=3 uid="uid://d26rcox3xh558"]
 
 [ext_resource type="Texture2D" uid="uid://df27w00nv3cu7" path="res://art/spell_fireball.png" id="1_qq5cv"]
+[ext_resource type="Script" uid="uid://u2xtjwqu15ww" path="res://Scripts/fireball.gd" id="2_5s1hi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5s1hi"]
 atlas = ExtResource("1_qq5cv")
@@ -43,3 +44,4 @@ z_index = 10
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8ayi3")
 autoplay = "default"
+script = ExtResource("2_5s1hi")

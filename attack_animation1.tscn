@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cn6445avvxdca"]
 
 [ext_resource type="Texture2D" uid="uid://dto43t10v1odw" path="res://art/spell_iceShard.png" id="1_5qdj3"]
-[ext_resource type="Script" uid="uid://dasaqe76anh7i" path="res://ice_shard.gd" id="2_b5mis"]
+[ext_resource type="Script" uid="uid://dasaqe76anh7i" path="res://Scripts/ice_shard.gd" id="2_b5mis"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5mis"]
 atlas = ExtResource("1_5qdj3")

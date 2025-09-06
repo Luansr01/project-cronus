@@ -1,56 +1,83 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=31 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://d87dkpddn7j0" path="res://Rafael/cena-ui.tscn" id="2_i431l"]
 [ext_resource type="Script" uid="uid://omrjeon1uig2" path="res://Rafael/ui.gd" id="3_i431l"]
 [ext_resource type="PackedScene" uid="uid://xanlg4pmc8r7" path="res://keys.tscn" id="5_6t8i5"]
+[ext_resource type="Texture2D" uid="uid://til1foxe48o0" path="res://art/icon_water.png" id="6_bx4lf"]
 [ext_resource type="PackedScene" uid="uid://bn4g5xx7o851n" path="res://timeline.tscn" id="6_dw4jg"]
 [ext_resource type="Texture2D" uid="uid://coogblbjnebnl" path="res://art/knight_idle.png" id="7_0npn6"]
-[ext_resource type="Script" path="res://hero.gd" id="8_lcjiy"]
+[ext_resource type="Texture2D" uid="uid://b1rer8o3t5hw7" path="res://art/icon_fire.png" id="8_aacmo"]
+[ext_resource type="Script" uid="uid://cvw3wossls4k7" path="res://hero.gd" id="8_lcjiy"]
 [ext_resource type="PackedScene" uid="uid://b64k466520khm" path="res://slime.tscn" id="8_mhv3b"]
+[ext_resource type="Texture2D" uid="uid://b2ja11dotfd1o" path="res://art/knight_cast.png" id="8_pihy1"]
+[ext_resource type="Texture2D" uid="uid://dukk2g1sv6qpq" path="res://art/icon_grass.png" id="9_rggsl"]
 [ext_resource type="AudioStream" uid="uid://b4fy7r6jn6pg3" path="res://art/sfx1.wav" id="10_4s0ev"]
+[ext_resource type="Texture2D" uid="uid://u62aklfocr22" path="res://art/knight_icon.png" id="10_rggsl"]
+[ext_resource type="Texture2D" uid="uid://ja8fwvrnddcq" path="res://background.jpg" id="11_fljlq"]
+[ext_resource type="Texture2D" uid="uid://diiew1p287y22" path="res://art/knight_defend.png" id="11_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://pdnedxqsivpq" path="res://art/sfx2.wav" id="11_pihy1"]
 [ext_resource type="AudioStream" uid="uid://bk08bmkmedcjw" path="res://art/sfx3.wav" id="12_slotg"]
 [ext_resource type="AudioStream" uid="uid://tu0h26w2xc3m" path="res://art/sfx4.wav" id="13_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://bqtdm2eh2lc2j" path="res://art/sfx5.wav" id="14_4s0ev"]
+[ext_resource type="PackedScene" uid="uid://cux01ji6hpkqb" path="res://tilemap.tscn" id="16_slotg"]
 
-[sub_resource type="Animation" id="Animation_mhv3b"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.566667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5g7e"]
+texture = ExtResource("11_fljlq")
 
-[sub_resource type="Animation" id="Animation_lcjiy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_slotg"]
+atlas = ExtResource("8_pihy1")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ol6im"]
-_data = {
-&"Idle": SubResource("Animation_mhv3b"),
-&"RESET": SubResource("Animation_lcjiy")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix8ov"]
+atlas = ExtResource("8_pihy1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s0ev"]
+atlas = ExtResource("7_0npn6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pihy1"]
+atlas = ExtResource("7_0npn6")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx4lf"]
+atlas = ExtResource("11_ix8ov")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slotg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slotg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix8ov")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s0ev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pihy1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx4lf")
+}],
+"loop": true,
+"name": &"defend",
+"speed": 5.0
+}]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ol6im"]
 streams_count = 4
@@ -63,6 +90,7 @@ stream_3/stream = ExtResource("13_ix8ov")
 script = ExtResource("1_7sfm4")
 
 [node name="UI" parent="." instance=ExtResource("2_i431l")]
+z_index = 4
 script = ExtResource("3_i431l")
 
 [node name="Lifetime" parent="UI" instance=ExtResource("2_7sfm4")]
@@ -74,6 +102,7 @@ initial_max_time = 10.0
 starting_time = 10.0
 
 [node name="Keys" parent="UI" instance=ExtResource("5_6t8i5")]
+visible = false
 layout_mode = 1
 offset_left = 46.0
 offset_top = 515.0
@@ -87,10 +116,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = 224.0
-offset_right = 339.335
-offset_bottom = 277.18
+offset_left = 83.0
+offset_top = 404.0
+offset_right = 409.0
+offset_bottom = 447.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -101,10 +130,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 34.0
-offset_top = 285.0
-offset_right = 333.335
-offset_bottom = 338.18
+offset_left = 90.0
+offset_top = 463.0
+offset_right = 395.0
+offset_bottom = 507.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -115,10 +144,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 28.0
-offset_top = 349.0
-offset_right = 327.335
-offset_bottom = 402.18
+offset_left = 101.0
+offset_top = 525.0
+offset_right = 400.0
+offset_bottom = 568.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Defesa Attack Pattern" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 93.0
+offset_top = 585.0
+offset_right = 400.0
+offset_bottom = 628.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,29 +172,71 @@ offset_top = 560.0
 offset_right = 372.0
 offset_bottom = 560.0
 
+[node name="Icone Água" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 403.0
+offset_right = 69.0
+offset_bottom = 443.0
+texture = ExtResource("6_bx4lf")
+
+[node name="Icone Fogo" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 462.0
+offset_right = 70.0
+offset_bottom = 502.0
+texture = ExtResource("8_aacmo")
+
+[node name="Icone Grama" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 523.0
+offset_right = 70.0
+offset_bottom = 563.0
+texture = ExtResource("9_rggsl")
+
+[node name="Icone Defesa" type="TextureRect" parent="UI"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 583.0
+offset_right = 69.0
+offset_bottom = 623.0
+texture = ExtResource("10_rggsl")
+
+[node name="TextureRect" type="Panel" parent="UI"]
+z_index = -20
+layout_mode = 0
+offset_top = 2.0
+offset_right = 1150.0
+offset_bottom = 755.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_s5g7e")
+
+[node name="Tilemap" parent="." instance=ExtResource("16_slotg")]
+z_index = -7
+position = Vector2(487, 696)
+scale = Vector2(4, 4)
+
 [node name="Hero" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(548, 351)
-scale = Vector2(4.1875, 4.1875)
-texture = ExtResource("7_0npn6")
+position = Vector2(234, 332)
+scale = Vector2(4, 4)
 vframes = 2
 script = ExtResource("8_lcjiy")
 strength = 40
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hero"]
-libraries = {
-&"": SubResource("AnimationLibrary_ol6im")
-}
-autoplay = "Idle"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero"]
+sprite_frames = SubResource("SpriteFrames_slotg")
+animation = &"defend"
+autoplay = "default"
+frame_progress = 0.893097
 
 [node name="Slime" parent="." instance=ExtResource("8_mhv3b")]
-position = Vector2(962, 310)
+position = Vector2(1006, 329)
 total_life = 10.0
 
 [node name="Slime2" parent="." instance=ExtResource("8_mhv3b")]
-position = Vector2(905, 180)
-total_life = 10.0
-position = Vector2(380, 305)
+position = Vector2(637, 332)
 total_life = 10000.0
 
 [node name="Sound Effects" type="Node" parent="."]
@@ -165,3 +250,6 @@ bus = &"SFX"
 [node name="Player Attack SFX" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("14_4s0ev")
 bus = &"SFX"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 326)

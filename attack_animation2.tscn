@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://d26rcox3xh558"]
+
+[ext_resource type="Texture2D" uid="uid://df27w00nv3cu7" path="res://art/spell_fireball.png" id="1_qq5cv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s1hi"]
+atlas = ExtResource("1_qq5cv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgebq"]
+atlas = ExtResource("1_qq5cv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5sw1b"]
+atlas = ExtResource("1_qq5cv")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knv8c"]
+atlas = ExtResource("1_qq5cv")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ayi3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s1hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgebq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5sw1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knv8c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AttackAnimation2" type="AnimatedSprite2D"]
+z_index = 10
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8ayi3")
+autoplay = "default"

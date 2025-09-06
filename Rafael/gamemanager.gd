@@ -9,6 +9,7 @@ var UI : Control
 @onready var agua_attack_container: HBoxContainer = $"UI/Água Attack Pattern"
 @onready var fogo_attack_container: HBoxContainer = $"UI/Fogo Attack Pattern"
 @onready var grama_attack_container: HBoxContainer = $"UI/Grama Attack Pattern"
+@onready var defesa_attack_pattern: HBoxContainer = $"UI/Defesa Attack Pattern"
 const SETA_UP = preload("res://seta_up.tscn")
 const SETA_RIGHT = preload("res://seta_right.tscn")
 const SETA_LEFT = preload("res://seta_left.tscn")
@@ -18,14 +19,17 @@ const SETA_BLANK = preload("res://seta_blank.tscn")
 var att_patt_agua : AttackPattern
 var att_patt_fogo : AttackPattern
 var att_patt_grama : AttackPattern
+var att_patt_defesa : AttackPattern
 
 var Hero : Sprite2D
+var player_defendendo : bool
 
 @onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
 @onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	UI = get_node("UI")
 	var slime = get_node("Slime")
 	Hero = get_node("Hero")
@@ -40,7 +44,8 @@ func _ready() -> void:
 	att_patt_agua =  AttackPattern.new(4, agua_attack_container)
 	att_patt_fogo =  AttackPattern.new(4, fogo_attack_container)
 	att_patt_grama =  AttackPattern.new(4, grama_attack_container)
-	
+	att_patt_defesa = AttackPattern.new(4, defesa_attack_pattern)
+	player_defendendo = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -79,6 +84,11 @@ func _input(event: InputEvent) -> void:
 			Hero.attack(targeted_enemy, Elementos.Elems.Grama)
 			UI.add_time(1)
 			player_attack_sfx.play()
+		if att_patt_defesa.play_attack_pattern(attack_input):
+			player_defendendo = true	
+			Hero.defend()
+			print("Defesa!")
+			
 		
 class AttackPattern:
 	var attack_array : Array = []
@@ -126,7 +136,6 @@ class AttackPattern:
 				place_pattern_container()
 		
 		if current_attack_pos == array_size:
-			print("Attack!")
 			randomize_att_pattern()
 			self.place_pattern_container()
 			return true

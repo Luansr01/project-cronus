@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6aymy682wv1n"]
+
+[ext_resource type="Texture2D" uid="uid://dr2cl2typw8q4" path="res://art/spell_spikeRoots.png" id="1_j27o2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkyui"]
+atlas = ExtResource("1_j27o2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i7ka"]
+atlas = ExtResource("1_j27o2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41nk2"]
+atlas = ExtResource("1_j27o2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2y2c5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkyui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i7ka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41nk2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AttackAnimation3" type="AnimatedSprite2D"]
+z_index = 10
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_2y2c5")
+autoplay = "default"

@@ -27,6 +27,9 @@ var player_defendendo : bool
 @onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
 @onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
 
+@onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
+@onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	

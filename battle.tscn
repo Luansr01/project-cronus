@@ -86,6 +86,13 @@ stream_1/stream = ExtResource("11_pihy1")
 stream_2/stream = ExtResource("12_slotg")
 stream_3/stream = ExtResource("13_ix8ov")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ol6im"]
+streams_count = 4
+stream_0/stream = ExtResource("10_4s0ev")
+stream_1/stream = ExtResource("11_pihy1")
+stream_2/stream = ExtResource("12_slotg")
+stream_3/stream = ExtResource("13_ix8ov")
+
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_7sfm4")
 

@@ -23,6 +23,11 @@ func _ready() -> void:
 	cur_life = total_life
 	lifebar.max_value = total_life
 	lifebar.value = cur_life
+	
+	animated_sprite.play("dying", -1.0, true)
+	await get_tree().create_timer(1).timeout
+	
+	animated_sprite.play("default")
 
 func hit(dano_base: float, tipo : Elementos.Elems):
 	cur_life -= dano_base * Elementos.calc_efetividade(tipo, enemy_type)

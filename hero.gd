@@ -21,10 +21,11 @@ func attack(enemy : Enemy, type : Elementos.Elems):
 	elif type == Elementos.Elems.Grama:
 		attack_animation = ATTACK_ANIMATION_3.instantiate()
 	enemy.add_child(attack_animation)
-	await get_tree().create_timer(0.5).timeout
-	attack_animation.queue_free()
+	#attack_animation.posiion.x -= 128
+	#await get_tree().create_timer(0.5).timeout
+	#attack_animation.queue_free()
 
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(1).timeout
 	animated_sprite_2d.play("default")
 	
 	

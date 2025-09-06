@@ -277,13 +277,15 @@ stream = ExtResource("14_4s0ev")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 326)
 
-[connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]
 [node name="Crosshair" type="TextureRect" parent="."]
 offset_left = 609.0
-offset_top = 242.0
+offset_top = 164.0
 offset_right = 649.0
-offset_bottom = 282.0
+offset_bottom = 204.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")
 
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]
 [connection signal="player_got_hit" from="Hero" to="." method="_on_hero_player_got_hit"]

@@ -1,17 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlu11roa84dnc"]
 
-[ext_resource type="Script" uid="uid://be202nx5qhxcj" path="res://lifetime.gd" id="1_4m2ci"]
+[ext_resource type="Script" uid="uid://sufwjpigi1ms" path="res://lifetime.gd" id="1_4m2ci"]
 [ext_resource type="Texture2D" uid="uid://lht50rrymmh4" path="res://icon.svg" id="2_rlml2"]
 
-[node name="Lifetime" type="Node"]
+[node name="Lifetime" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_4m2ci")
-initial_max_time_v = 100.0
-starting_time_v = 100.0
 
 [node name="LifetimeBar" type="TextureProgressBar" parent="."]
-offset_right = 128.0
-offset_bottom = 128.0
+offset_right = 528.0
+offset_bottom = 30.0
+step = 0.01
+nine_patch_stretch = true
 texture_progress = ExtResource("2_rlml2")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 20.444
 one_shot = true

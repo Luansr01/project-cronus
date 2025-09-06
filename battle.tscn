@@ -1,9 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlciqwi2nw5fi"]
 
-[ext_resource type="Script" uid="uid://be202nx5qhxcj" path="res://lifetime.gd" id="1_oxp8w"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
 
+[sub_resource type="GDScript" id="GDScript_ip7xm"]
+
 [node name="Battle" type="Node2D"]
-script = ExtResource("1_oxp8w")
+script = SubResource("GDScript_ip7xm")
 
 [node name="Lifetime" parent="." instance=ExtResource("2_7sfm4")]
+offset_left = 25.0
+offset_top = 27.0
+offset_right = 25.0
+offset_bottom = 27.0
+initial_max_time = 10.0
+starting_time = 10.0

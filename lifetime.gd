@@ -1,32 +1,32 @@
-extends Node
+extends Control
 
-@export var initial_max_time_v : float
-@export var starting_time_v : float
+@export var initial_max_time : float
+@export var starting_time : float
 
-@onready var timer : Timer = $Timer
-@onready var bar : TextureProgressBar = $LifetimeBar
+var timer : Timer
+var bar : TextureProgressBar
 
-var max_time_v : float:
+var max_time : float:
 	set(v):
-		max_time_v = v
-		if(bar):
-			bar.max_value = v
-var current_time_v : float:
+		max_time = v
+		bar.max_value = v
+var current_time : float:
 	set(v):
-		current_time_v = clamp(v, 0, max_time_v)
-		if(bar):
-			bar.value = current_time_v
+		current_time = clamp(v, 0, max_time)
+		bar.value = current_time
 
 func set_time(v):
-	current_time_v = v
-	timer.wait_time = current_time_v
-
+	timer.start(clamp(v, 0, max_time))
+	
 func _ready():
-	max_time_v = initial_max_time_v
-	current_time_v = starting_time_v
+	timer = get_node("Timer")
+	bar = get_node("LifetimeBar")
+	
+	max_time = initial_max_time
 	
 	timer.one_shot = true
-	timer.start()
+	set_time(starting_time)
 
-func _update():
-	current_time_v = timer.wait_time
+func _process(delta):
+	current_time = timer.time_left
+	print(current_time)

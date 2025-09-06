@@ -303,6 +303,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Icone Água" type="TextureRect" parent="UI/Tutorial"]
+layout_mode = 0
 offset_left = 875.0
 offset_top = 527.0
 offset_right = 915.0
@@ -310,6 +311,7 @@ offset_bottom = 567.0
 texture = ExtResource("6_bx4lf")
 
 [node name="Icone Fogo" type="TextureRect" parent="UI/Tutorial"]
+layout_mode = 0
 offset_left = 944.0
 offset_top = 404.0
 offset_right = 984.0
@@ -317,6 +319,7 @@ offset_bottom = 444.0
 texture = ExtResource("8_aacmo")
 
 [node name="Icone Grama" type="TextureRect" parent="UI/Tutorial"]
+layout_mode = 0
 offset_left = 1026.0
 offset_top = 528.0
 offset_right = 1066.0
@@ -324,6 +327,7 @@ offset_bottom = 568.0
 texture = ExtResource("9_rggsl")
 
 [node name="Icone Defesa" type="TextureRect" parent="UI/Tutorial"]
+layout_mode = 0
 offset_left = 875.0
 offset_top = 599.0
 offset_right = 915.0

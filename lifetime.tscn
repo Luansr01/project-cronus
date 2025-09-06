@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlu11roa84dnc"]
+[gd_scene load_steps=4 format=3 uid="uid://dlu11roa84dnc"]
 
 [ext_resource type="Script" uid="uid://sufwjpigi1ms" path="res://lifetime.gd" id="1_4m2ci"]
-[ext_resource type="Texture2D" uid="uid://lht50rrymmh4" path="res://icon.svg" id="2_rlml2"]
+[ext_resource type="Texture2D" uid="uid://c60pcy7jxxfh7" path="res://art/healthBar-2.png.png" id="2_fwnfy"]
+[ext_resource type="Texture2D" uid="uid://yyde5xjqotqc" path="res://art/healthBar-1.png.png" id="3_ues5n"]
 
 [node name="Lifetime" type="Control"]
 layout_mode = 3
@@ -14,7 +15,8 @@ offset_right = 528.0
 offset_bottom = 30.0
 step = 0.01
 nine_patch_stretch = true
-texture_progress = ExtResource("2_rlml2")
+texture_under = ExtResource("2_fwnfy")
+texture_progress = ExtResource("3_ues5n")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.444

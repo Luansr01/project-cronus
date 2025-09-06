@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3p5xqryv7joh"]
+
+[ext_resource type="Texture2D" uid="uid://lht50rrymmh4" path="res://icon.svg" id="1_hqyvl"]
+[ext_resource type="Script" uid="uid://cmxeexsumgom2" path="res://icon.gd" id="2_otv2m"]
+
+[node name="Icon" type="TextureRect"]
+offset_left = 144.0
+offset_right = 208.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("1_hqyvl")
+expand_mode = 1
+script = ExtResource("2_otv2m")

@@ -86,5 +86,15 @@ script = ExtResource("1_5jc4t")
 total_life = 100.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ol6im")
 autoplay = "default"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -30.0
+offset_top = -48.94
+offset_right = 30.0
+offset_bottom = -34.94
+value = 100.0
+show_percentage = false

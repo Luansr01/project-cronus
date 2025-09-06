@@ -27,9 +27,14 @@ func _ready() -> void:
 	UI = get_node("UI")
 	var slime = get_node("Slime")
 	Hero = get_node("Hero")
+
 	for i in get_children():
 		if i is Enemy:
 			enemies.append(i)		
+			UI.add_icon_to_timeline("Slime", i)
+			
+	targeted_enemy = enemies[0]
+			
 	att_patt_agua =  AttackPattern.new(4, agua_attack_container)
 	att_patt_fogo =  AttackPattern.new(4, fogo_attack_container)
 	att_patt_grama =  AttackPattern.new(4, grama_attack_container)
@@ -55,19 +60,16 @@ func _input(event: InputEvent) -> void:
 		UI.press_key("right")
 		
 	
-	if attack_input != null:
+	if attack_input != null and targeted_enemy != null:
 		if att_patt_agua.play_attack_pattern(attack_input):
-			Hero.attack(enemies[0], Elementos.Elems.Água)
+			Hero.attack(targeted_enemy, Elementos.Elems.Água)
 			UI.add_time(1)
 		if att_patt_fogo.play_attack_pattern(attack_input):
-			Hero.attack(enemies[0], Elementos.Elems.Fogo)
+			Hero.attack(targeted_enemy, Elementos.Elems.Fogo)
 			UI.add_time(1)
 		if att_patt_grama.play_attack_pattern(attack_input):
-			Hero.attack(enemies[0], Elementos.Elems.Grama)
+			Hero.attack(targeted_enemy, Elementos.Elems.Grama)
 			UI.add_time(1)
-		
-		
-		
 		
 class AttackPattern:
 	var attack_array : Array = []

@@ -1,7 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://djqkv15x1yodb"]
+[gd_scene load_steps=9 format=3 uid="uid://djqkv15x1yodb"]
 
 [ext_resource type="FontFile" uid="uid://pm57o4jaqrxi" path="res://PixelifySans-VariableFont_wght.ttf" id="1_y26ei"]
-[ext_resource type="Script" uid="uid://cmm8x6o1tq1p5" path="res://game_over_text.gd" id="2_yxx3c"]
+[ext_resource type="Script" path="res://game_over_text.gd" id="2_yxx3c"]
+[ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="3_ccer4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u835"]
+atlas = ExtResource("3_ccer4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftari"]
+atlas = ExtResource("3_ccer4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28vn7"]
+atlas = ExtResource("3_ccer4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2vha"]
+atlas = ExtResource("3_ccer4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fkf4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u835")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftari")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28vn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2vha")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,6 +70,7 @@ script = ExtResource("2_yxx3c")
 autostart = true
 
 [node name="Dialogue" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_top = 320.0
 offset_right = 1152.0
 offset_bottom = 448.0
@@ -41,5 +79,13 @@ theme_override_font_sizes/normal_font_size = 31
 text = "Pressione Qualquer Tecla"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(567, 523)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_fkf4o")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
 
 [connection signal="timeout" from="Game_Over/Timer" to="Game_Over" method="_on_timer_timeout"]

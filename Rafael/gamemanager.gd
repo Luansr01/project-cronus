@@ -1,6 +1,8 @@
 extends Node2D
 
-var enemy_prefab = preload("res://slime.tscn")
+var enemy_prefab_agua = preload("res://slime_agua.tscn")
+var enemy_prefab_fogo = preload("res://slime_fogo.tscn")
+var enemy_prefab_grama = preload("res://slime_grama.tscn")
 
 var targeted_enemy : Enemy:
 	set(x):
@@ -38,7 +40,10 @@ var player_defendendo : bool
 
 var killed_enemy :bool
 func spawn_slimes(ammount : int):
+	var enemy_prefab
+	var enemy_prefab_list = [enemy_prefab_agua, enemy_prefab_fogo, enemy_prefab_grama]
 	for i in range(ammount):
+		enemy_prefab = enemy_prefab_list[randi_range(0, 2)]
 		enemies.append(enemy_prefab.instantiate())
 		add_child(enemies[-1])
 		UI.add_icon_to_timeline("Slime", enemies[-1])
@@ -179,3 +184,8 @@ func _on_slime_enemy_died(enemy: Variant) -> void:
 
 func _on_hero_player_got_hit(damage: Variant) -> void:
 	UI.add_time(-damage)
+
+
+func _on_spawn_timer_timeout() -> void:
+	if enemies.size() < 5:
+		spawn_slimes(1)

@@ -109,6 +109,13 @@ script = ExtResource("1_7sfm4")
 z_index = 4
 script = ExtResource("3_i431l")
 
+[node name="ColorRect3" type="ColorRect" parent="UI"]
+offset_left = -171.0
+offset_top = 373.0
+offset_right = 1251.0
+offset_bottom = 397.0
+color = Color(0.381703, 0.381703, 0.381703, 1)
+
 [node name="ColorRect" type="ColorRect" parent="UI"]
 layout_mode = 0
 offset_left = -6.0
@@ -279,10 +286,20 @@ position = Vector2(574, 326)
 [node name="Crosshair" type="TextureRect" parent="."]
 offset_left = 609.0
 offset_top = 242.0
+offset_top = 164.0
 offset_right = 649.0
 offset_bottom = 282.0
+offset_bottom = 204.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")
 
+<<<<<<< HEAD
+=======
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+>>>>>>> fe69771c773c18543d63687ab5028eb3bae34684
 [connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]
 [connection signal="player_got_hit" from="Hero" to="." method="_on_hero_player_got_hit"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

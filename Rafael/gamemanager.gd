@@ -1,8 +1,17 @@
 extends Node2D
 
+var enemy_prefab = preload("res://slime.tscn")
 
-var targeted_enemy : Enemy
+var targeted_enemy : Enemy:
+	set(x):
+		targeted_enemy = x
+		if targeted_enemy != null:
+			crosshair.position.x = targeted_enemy.position.x - crosshair.size.x/2
+		else:
+			crosshair.position.x = 10000000000
 var enemies = []
+
+var crosshair
 
 var label_attack_pattern: Label
 var UI : Control
@@ -28,19 +37,24 @@ var player_defendendo : bool
 @onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
 
 var killed_enemy :bool
+func spawn_slimes(ammount : int):
+	for i in range(ammount):
+		enemies.append(enemy_prefab.instantiate())
+		add_child(enemies[-1])
+		UI.add_icon_to_timeline("Slime", enemies[-1])
+		enemies[-1].target = Hero
+		enemies[-1].position.y = 278.0
+		enemies[-1].position.x = RandomNumberGenerator.new().randf_range(500, 1000)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	crosshair = get_node("Crosshair")
 	UI = get_node("UI")
-	var slime = get_node("Slime")
 	Hero = get_node("Hero")
 
-	for i in get_children():
-		if i is Enemy:
-			enemies.append(i)		
-			UI.add_icon_to_timeline("Slime", i)
-			
+	spawn_slimes(3)
+	
 	targeted_enemy = enemies[0]
 			
 	att_patt_agua =  AttackPattern.new(4, agua_attack_container)
@@ -51,7 +65,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if targeted_enemy == null and not enemies.is_empty():
+		targeted_enemy = enemies[-1]
 
 func _input(event: InputEvent) -> void:
 	var attack_input = null
@@ -151,3 +166,16 @@ class AttackPattern:
 		for child in children:
 			parent_node.remove_child(child) # Detach from the scene tree
 			child.queue_free() # Safely delete and free memory	
+
+
+func _on_slime_enemy_died(enemy: Variant) -> void:
+		UI.add_time(10)
+		enemies.erase(enemy)
+		if not enemies.is_empty():
+			targeted_enemy = enemies[-1]
+		else:
+			targeted_enemy = null
+		
+
+func _on_hero_player_got_hit(damage: Variant) -> void:
+	UI.add_time(-damage)

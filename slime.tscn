@@ -84,6 +84,7 @@ animations = [{
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_5jc4t")
 total_life = 100.0
+damage = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)

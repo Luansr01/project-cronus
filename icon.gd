@@ -2,8 +2,8 @@ extends TextureRect
 
 var parent
 
-func toggle_active():
-	parent.toggle_active()
+func action():
+	parent.action()
 
 func _process(delta):
 	if parent == null:

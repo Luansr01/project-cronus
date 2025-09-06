@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds35jghksgqni"]
+[gd_scene load_steps=6 format=3 uid="uid://b64k466520khm"]
 
-[ext_resource type="Script" path="res://enemy_class.gd" id="1_5jc4t"]
+[ext_resource type="Script" uid="uid://dpkheow0xlwtg" path="res://enemy_class.gd" id="1_5jc4t"]
 [ext_resource type="Texture2D" uid="uid://c50tduvjqi2f2" path="res://art/slime_idle.png" id="2_4l1t8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mhv3b"]

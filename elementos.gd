@@ -1,6 +1,6 @@
 extends Node
 
-enum Elems {Pedra, Papel, Tesoura}
+enum Elems {Água, Grama, Fogo}
 
 # linha é quem ataca e coluna quem recebe
 const matriz_fraquezas = \

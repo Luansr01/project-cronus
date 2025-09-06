@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bijn64mmnfgu1"]
+
+[ext_resource type="PackedScene" uid="uid://cqp8v1xcyqq8d" path="res://seta_up.tscn" id="1_mickg"]
+[ext_resource type="Texture2D" uid="uid://bbnmshep15out" path="res://art/arrow_right.png" id="2_6u84s"]
+
+[node name="Seta Up" instance=ExtResource("1_mickg")]
+texture = ExtResource("2_6u84s")

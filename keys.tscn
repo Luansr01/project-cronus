@@ -26,6 +26,7 @@ offset_bottom = 111.0
 texture = ExtResource("2_c7xcv")
 
 [node name="Left" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 39.0
 offset_right = 43.0
@@ -33,6 +34,7 @@ offset_bottom = 79.0
 texture = ExtResource("3_ktw36")
 
 [node name="Right" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 40.0
 offset_right = 120.0
@@ -40,6 +42,7 @@ offset_bottom = 80.0
 texture = ExtResource("4_b4syl")
 
 [node name="Up" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 5.0
 offset_right = 82.0

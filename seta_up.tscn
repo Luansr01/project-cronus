@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqp8v1xcyqq8d"]
+
+[ext_resource type="Texture2D" uid="uid://5mjdwotvb80x" path="res://art/arrow_up.png" id="1_e56ev"]
+
+[node name="Seta Up" type="TextureRect"]
+texture = ExtResource("1_e56ev")
+expand_mode = 3
+stretch_mode = 5

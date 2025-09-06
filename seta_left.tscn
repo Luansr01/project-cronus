@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbiyym3dg7kxx"]
+
+[ext_resource type="PackedScene" uid="uid://cqp8v1xcyqq8d" path="res://seta_up.tscn" id="1_67d28"]
+[ext_resource type="Texture2D" uid="uid://cyj8po0syhp2t" path="res://art/arrow_left.png" id="2_bjo1o"]
+
+[node name="Seta Left" instance=ExtResource("1_67d28")]
+texture = ExtResource("2_bjo1o")

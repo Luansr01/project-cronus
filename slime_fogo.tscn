@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwfyabwhvmkyg"]
+
+[ext_resource type="PackedScene" uid="uid://b64k466520khm" path="res://slime.tscn" id="1_gcxl6"]
+[ext_resource type="Texture2D" uid="uid://c4cf57trv8lm1" path="res://art/slime_red_idle.png" id="2_myxdh"]
+[ext_resource type="Texture2D" uid="uid://cm0qj2xac2fd5" path="res://art/slime_red_death.png" id="3_knned"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4538a"]
+atlas = ExtResource("2_myxdh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li1eu"]
+atlas = ExtResource("2_myxdh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1yb2n"]
+atlas = ExtResource("3_knned")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0srm"]
+atlas = ExtResource("3_knned")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdcjr"]
+atlas = ExtResource("3_knned")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohc5u"]
+atlas = ExtResource("3_knned")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnvvp"]
+atlas = ExtResource("3_knned")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjo1j"]
+atlas = ExtResource("3_knned")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bn0gg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4538a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li1eu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1yb2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0srm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdcjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohc5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnvvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjo1j")
+}],
+"loop": false,
+"name": &"dying",
+"speed": 10.0
+}]
+
+[node name="Slime fogo" instance=ExtResource("1_gcxl6")]
+enemy_type = 2
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_bn0gg")
+animation = &"dying"

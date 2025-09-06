@@ -20,8 +20,8 @@
 [ext_resource type="AudioStream" uid="uid://bk08bmkmedcjw" path="res://art/sfx3.wav" id="12_slotg"]
 [ext_resource type="AudioStream" uid="uid://tu0h26w2xc3m" path="res://art/sfx4.wav" id="13_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://bqtdm2eh2lc2j" path="res://art/sfx5.wav" id="14_4s0ev"]
-[ext_resource type="Shader" path="res://flash.gdshader" id="14_fljlq"]
-[ext_resource type="PackedScene" uid="uid://cux01ji6hpkqb" path="res://tilemap.tscn" id="16_slotg"]
+[ext_resource type="Shader" uid="uid://bh7ormae1eqf3" path="res://flash.gdshader" id="14_fljlq"]
+[ext_resource type="PackedScene" uid="uid://66epj0pbkpk2" path="res://tilemap.tscn" id="16_slotg"]
 [ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="18_s5g7e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s5g7e"]
@@ -109,6 +109,13 @@ script = ExtResource("1_7sfm4")
 [node name="UI" parent="." instance=ExtResource("2_i431l")]
 z_index = 4
 script = ExtResource("3_i431l")
+
+[node name="ColorRect3" type="ColorRect" parent="UI"]
+offset_left = -171.0
+offset_top = 373.0
+offset_right = 1251.0
+offset_bottom = 397.0
+color = Color(0.381703, 0.381703, 0.381703, 1)
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 layout_mode = 0
@@ -286,6 +293,9 @@ pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [connection signal="has_killed_enemy" from="Hero" to="." method="_on_hero_has_killed_enemy"]
 [connection signal="player_got_hit" from="Hero" to="." method="_on_hero_player_got_hit"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

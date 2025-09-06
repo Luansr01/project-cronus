@@ -13,6 +13,7 @@ var current_active:
 	set(x):
 		current_active = x
 		current_active.action()
+		
 
 var a : TextureRect
 var marker : ColorRect
@@ -48,9 +49,18 @@ func add_icon_to_timeline(type, parent):
 	add_child(new_icon)
 	new_icon.parent = parent
 	
+	match type:
+		0:
+			new_icon.texture = load("res://art/slime_blue_icon.png")
+		1:
+			new_icon.texture = load("res://art/slime_red_icon.png")
+		2:
+			new_icon.texture = load("res://art/slime_icon.png")
+		_:
+			new_icon.texture = load("res://art/slime_icon.png")
 
-	if type == "Slime":
-		new_icon.texture = load("res://art/slime_icon.png")
+#	if type == "Slime":
+#		new_icon.texture = load("res://art/slime_icon.png")
 
 func _on_timer_timeout() -> void:
 	for i in get_children():

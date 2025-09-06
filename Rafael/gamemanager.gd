@@ -34,19 +34,23 @@ var att_patt_defesa : AttackPattern
 
 var Hero : Sprite2D
 var player_defendendo : bool
-
-@onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
+@onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX New"
+#@onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
 @onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
+@onready var enemy_death_sfx: AudioStreamPlayer = $"Sound Effects/Enemy Death SFX"
+@onready var player_get_hit_sfx: AudioStreamPlayer = $"Sound Effects/Player Get Hit SFX"
 
 var killed_enemy :bool
 func spawn_slimes(ammount : int):
-	var enemy_prefab
+	var enemy_prefab 
+	var enemy_index
 	var enemy_prefab_list = [enemy_prefab_agua, enemy_prefab_fogo, enemy_prefab_grama]
 	for i in range(ammount):
-		enemy_prefab = enemy_prefab_list[randi_range(0, 2)]
+		enemy_index = randi_range(0, 2)
+		enemy_prefab = enemy_prefab_list[enemy_index]
 		enemies.append(enemy_prefab.instantiate())
 		add_child(enemies[-1])
-		UI.add_icon_to_timeline("Slime", enemies[-1])
+		UI.add_icon_to_timeline(enemy_index, enemies[-1])
 		enemies[-1].target = Hero
 		enemies[-1].position.y = 278.0
 		enemies[-1].position.x = RandomNumberGenerator.new().randf_range(500, 1000)
@@ -65,7 +69,7 @@ func _ready() -> void:
 	att_patt_agua =  AttackPattern.new(4, agua_attack_container)
 	att_patt_fogo =  AttackPattern.new(4, fogo_attack_container)
 	att_patt_grama =  AttackPattern.new(4, grama_attack_container)
-	att_patt_defesa = AttackPattern.new(4, defesa_attack_pattern)
+	att_patt_defesa = AttackPattern.new(3, defesa_attack_pattern)
 	player_defendendo = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -78,18 +82,22 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up"):
 		attack_input = 0
 		UI.press_key("up")
+		player_input_sfx.stream = preload("res://art/sfx1.wav")		
 		player_input_sfx.play()		
 	elif event.is_action_pressed("down"):
 		attack_input = 2
 		UI.press_key("down")
+		player_input_sfx.stream = preload("res://art/sfx2.wav")		
 		player_input_sfx.play()
 	elif event.is_action_pressed("left"):
 		attack_input = 1
 		UI.press_key("left")
+		player_input_sfx.stream = preload("res://art/sfx3.wav")		
 		player_input_sfx.play()
 	elif event.is_action_pressed("right"):
 		attack_input = 3
 		UI.press_key("right")
+		player_input_sfx.stream = preload("res://art/sfx4.wav")
 		player_input_sfx.play()
 		
 	
@@ -112,6 +120,8 @@ func _input(event: InputEvent) -> void:
 			
 func _on_hero_has_killed_enemy() -> void:
 	UI.add_time(5)
+	enemy_death_sfx.play()
+
 	
 	
 	
@@ -184,6 +194,7 @@ func _on_slime_enemy_died(enemy: Variant) -> void:
 
 func _on_hero_player_got_hit(damage: Variant) -> void:
 	UI.add_time(-damage)
+	player_get_hit_sfx.play()
 
 
 func _on_spawn_timer_timeout() -> void:

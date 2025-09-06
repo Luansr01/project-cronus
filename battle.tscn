@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=36 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -22,6 +22,8 @@
 [ext_resource type="Shader" path="res://flash.gdshader" id="14_fljlq"]
 [ext_resource type="PackedScene" uid="uid://cux01ji6hpkqb" path="res://tilemap.tscn" id="16_slotg"]
 [ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="18_s5g7e"]
+[ext_resource type="AudioStream" uid="uid://dbosjhs0ajxt8" path="res://art/hitHurt.wav" id="24_j128n"]
+[ext_resource type="AudioStream" uid="uid://c3rq6uox6gj8h" path="res://art/hitHurt (1).wav" id="25_nt5qs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fljlq"]
 bg_color = Color(0.301961, 0.65098, 1, 1)
@@ -102,6 +104,11 @@ stream_1/stream = ExtResource("11_pihy1")
 stream_2/stream = ExtResource("12_slotg")
 stream_3/stream = ExtResource("13_ix8ov")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nt5qs"]
+random_pitch = 2.34
+streams_count = 1
+stream_0/stream = ExtResource("24_j128n")
+
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_7sfm4")
 
@@ -110,6 +117,7 @@ z_index = 4
 script = ExtResource("3_i431l")
 
 [node name="ColorRect3" type="ColorRect" parent="UI"]
+layout_mode = 0
 offset_left = -171.0
 offset_top = 373.0
 offset_right = 1251.0
@@ -280,15 +288,25 @@ max_polyphony = 5
 [node name="Player Attack SFX" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("14_4s0ev")
 
+[node name="Enemy Death SFX" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = SubResource("AudioStreamRandomizer_nt5qs")
+volume_db = -8.914
+bus = &"SFX"
+
+[node name="Player Input SFX New" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("13_ix8ov")
+
+[node name="Player Get Hit SFX" type="AudioStreamPlayer" parent="Sound Effects"]
+stream = ExtResource("25_nt5qs")
+bus = &"SFX"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 326)
 
 [node name="Crosshair" type="TextureRect" parent="."]
 offset_left = 609.0
-offset_top = 242.0
 offset_top = 164.0
 offset_right = 649.0
-offset_bottom = 282.0
 offset_bottom = 204.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")

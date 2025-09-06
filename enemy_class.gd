@@ -42,6 +42,8 @@ func _die():
 
 func action():
 	target.hit(damage)
-
+	animated_sprite.play("attacking")
+	await get_tree().create_timer(0.5).timeout
+	animated_sprite.play("default")
 	
 	

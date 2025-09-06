@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=44 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://u62aklfocr22" path="res://art/knight_icon.png" id="10_rggsl"]
 [ext_resource type="Texture2D" uid="uid://diiew1p287y22" path="res://art/knight_defend.png" id="11_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://pdnedxqsivpq" path="res://art/sfx2.wav" id="11_pihy1"]
+[ext_resource type="Script" uid="uid://6rmssrofi61j" path="res://score.gd" id="11_uwl2g"]
 [ext_resource type="AudioStream" uid="uid://bk08bmkmedcjw" path="res://art/sfx3.wav" id="12_slotg"]
 [ext_resource type="AudioStream" uid="uid://tu0h26w2xc3m" path="res://art/sfx4.wav" id="13_ix8ov"]
 [ext_resource type="AudioStream" uid="uid://bqtdm2eh2lc2j" path="res://art/sfx5.wav" id="14_4s0ev"]
@@ -295,6 +296,17 @@ offset_right = 1150.0
 offset_bottom = 755.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_fljlq")
 
+[node name="Score" type="RichTextLabel" parent="UI"]
+layout_mode = 0
+offset_top = 412.0
+offset_right = 1153.0
+offset_bottom = 473.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_uwl2g")
+
 [node name="Tilemap" parent="." instance=ExtResource("16_slotg")]
 z_index = -7
 position = Vector2(488, 488)
@@ -348,9 +360,9 @@ position = Vector2(574, 326)
 
 [node name="Crosshair" type="TextureRect" parent="."]
 material = ExtResource("25_v7t3w")
-offset_left = 609.0
+offset_left = 1494.0
 offset_top = 164.0
-offset_right = 649.0
+offset_right = 1534.0
 offset_bottom = 204.0
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("10_rggsl")

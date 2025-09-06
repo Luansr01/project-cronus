@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Projeto Cronus"
-run/main_scene="uid://c4l658m03rqxg"
+run/main_scene="uid://dlciqwi2nw5fi"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Elementos="*res://elementos.gd"
 Music="*res://music.tscn"
+Score="*res://score.gd"
 
 [input]
 

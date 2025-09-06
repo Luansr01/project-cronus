@@ -2,17 +2,22 @@ class_name Enemy
 
 extends Node2D
 
+signal enemy_died(enemy)
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+var target
 
 @export var total_life: float
 var cur_life: float
 @export var enemy_type: Elementos.Elems
+@export var damage = 2
 
 var lifebar : ProgressBar
 var is_active = false
 
 func _ready() -> void:
 	lifebar = get_node("ProgressBar")
+	enemy_died.connect(get_parent()._on_slime_enemy_died)
 	
 	cur_life = total_life
 	lifebar.max_value = total_life
@@ -26,10 +31,13 @@ func hit(dano_base: float, tipo : Elementos.Elems):
 		
 func _die():
 	print("morri!")
+	emit_signal("enemy_died", self)
 	animated_sprite.play("dying")
 	await get_tree().create_timer(2).timeout
 	queue_free()
+
+func action():
+	target.hit(damage)
+
 	
-func toggle_active():
-	is_active = not is_active
 	

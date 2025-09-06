@@ -11,15 +11,11 @@ var max_place
 
 var current_active:
 	set(x):
-		if current_active:
-			current_active.toggle_active()
-			current_active.modulate = Color(1,1,1)
 		current_active = x
-		current_active.toggle_active()
-		current_active.modulate = Color(2,2,2)
+		current_active.action()
 
 var a : TextureRect
-
+var marker : ColorRect
 var timer : Timer
 
 func check_if_any_end() -> bool:
@@ -30,7 +26,12 @@ func check_if_any_end() -> bool:
 
 func _ready():
 	timer = get_node("Timer")
+	marker = get_node("Marker")
+
 	get_node("Line").size.x = length
+	
+	marker.position.x = length/2
+	
 	
 	max_place = length / speed
 	timer.start(speed)
@@ -59,7 +60,7 @@ func _on_timer_timeout() -> void:
 			else:
 				i.position.x = length - i.size.x/2
 				
-			if i.position.x == length/2:
+			if i.position.x + i.size.x/2 == length/2:
 				current_active = i
 			
 			var scale = -(pow(((i.position.x + i.size.x/2) - (length/2)), 2)/pow((length/2) * 2, 2)) + 1

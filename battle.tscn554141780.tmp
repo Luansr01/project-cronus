@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -68,7 +68,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -227,9 +227,9 @@ strength = 40
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero"]
 sprite_frames = SubResource("SpriteFrames_slotg")
-animation = &"attack"
+animation = &"defend"
 autoplay = "default"
-frame_progress = 0.429418
+frame_progress = 0.893097
 
 [node name="Slime" parent="." instance=ExtResource("8_mhv3b")]
 position = Vector2(1006, 329)

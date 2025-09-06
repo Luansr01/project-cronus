@@ -2,6 +2,10 @@ extends Node2D
 
 @export var attack_pattern = [0,1,2,3]
 var current_att_pattern_pos
+
+var targeted_enemy : Enemy
+var enemies = []
+
 var label_attack_pattern: Label
 var UI : Control
 @onready var attack_pattern_container: HBoxContainer = $UI/AttackPatternContainer
@@ -48,11 +52,18 @@ func play_attack_pattern(att_pat, player_dir) -> void:
 		print("Attack!")
 		randomize_att_pattern()
 		place_pattern_container(attack_pattern)
+var Hero : Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UI = get_node("UI")
 	var slime = get_node("Slime")
+	Hero = get_node("Hero")
+	
+	for i in get_children():
+		if i is Enemy:
+			enemies.append(i)
+	
 	current_att_pattern_pos = 0
 
 
@@ -81,3 +92,11 @@ func _input(event: InputEvent) -> void:
 	if attack_input != null:
 		play_attack_pattern(attack_pattern, attack_input)
 		
+	if current_att_pattern_pos < attack_pattern.size():
+		if attack_input != null and attack_input == attack_pattern[current_att_pattern_pos]:
+			current_att_pattern_pos += 1
+	else:
+		print("Ataque!")
+		Hero.attack()
+		UI.add_time(1)
+		current_att_pattern_pos = 0

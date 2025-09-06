@@ -212,5 +212,5 @@ func _on_hero_player_got_hit(damage: Variant) -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
-	if enemies.size() < 5:
+	if enemies.size() < 3:
 		spawn_slimes(1)

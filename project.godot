@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Elementos="*res://elementos.gd"
 Music="*res://music.tscn"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 up={

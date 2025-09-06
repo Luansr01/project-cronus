@@ -1,57 +1,25 @@
 extends Node2D
 
-@export var attack_pattern = [0,1,2,3]
-var current_att_pattern_pos
 
 var targeted_enemy : Enemy
 var enemies = []
 
 var label_attack_pattern: Label
 var UI : Control
-@onready var attack_pattern_container: HBoxContainer = $UI/AttackPatternContainer
+@onready var agua_attack_container: HBoxContainer = $"UI/Água Attack Pattern"
+@onready var fogo_attack_container: HBoxContainer = $"UI/Fogo Attack Pattern"
+@onready var grama_attack_container: HBoxContainer = $"UI/Grama Attack Pattern"
 const SETA_UP = preload("res://seta_up.tscn")
 const SETA_RIGHT = preload("res://seta_right.tscn")
 const SETA_LEFT = preload("res://seta_left.tscn")
 const SETA_DOWN = preload("res://seta_down.tscn")
 const SETA_BLANK = preload("res://seta_blank.tscn")
 
-func remove_all_children(parent_node) -> void:
-	var children = parent_node.get_children()
-	for child in children:
-		parent_node.remove_child(child) # Detach from the scene tree
-		child.queue_free() # Safely delete and free memory
-
-func randomize_att_pattern() -> void:
-	var rng = RandomNumberGenerator.new()	
-	for i in range(attack_pattern.size()):
-		attack_pattern[i] = rng.randi_range(0, 3)
+var att_patt_agua : AttackPattern
+var att_patt_fogo : AttackPattern
+var att_patt_grama : AttackPattern
 
 
-func place_pattern_container(att_pattern: Array) -> void:
-	remove_all_children(attack_pattern_container)
-	for dir in att_pattern:
-		match dir:
-			0:
-				attack_pattern_container.add_child(SETA_UP.instantiate())
-			1:
-				attack_pattern_container.add_child(SETA_LEFT.instantiate())
-			2:
-				attack_pattern_container.add_child(SETA_DOWN.instantiate())
-			3:
-				attack_pattern_container.add_child(SETA_RIGHT.instantiate())
-	current_att_pattern_pos = 0
-
-func play_attack_pattern(att_pat, player_dir) -> void:
-	if current_att_pattern_pos < att_pat.size():
-		if  player_dir == att_pat[current_att_pattern_pos]:
-			var curr_dir_icon : TextureRect = attack_pattern_container.get_children()[current_att_pattern_pos]
-			curr_dir_icon.modulate = Color(2, 2, 2)
-			current_att_pattern_pos += 1
-	
-	if current_att_pattern_pos == att_pat.size():
-		print("Attack!")
-		randomize_att_pattern()
-		place_pattern_container(attack_pattern)
 var Hero : Sprite2D
 
 # Called when the node enters the scene tree for the first time.
@@ -59,13 +27,13 @@ func _ready() -> void:
 	UI = get_node("UI")
 	var slime = get_node("Slime")
 	Hero = get_node("Hero")
-	
 	for i in get_children():
 		if i is Enemy:
-			enemies.append(i)
+			enemies.append(i)		
+	att_patt_agua =  AttackPattern.new(4, agua_attack_container)
+	att_patt_fogo =  AttackPattern.new(4, fogo_attack_container)
+	att_patt_grama =  AttackPattern.new(4, grama_attack_container)
 	
-	current_att_pattern_pos = 0
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -86,17 +54,75 @@ func _input(event: InputEvent) -> void:
 		attack_input = 3
 		UI.press_key("right")
 		
-	if event.is_action_pressed("ui_accept"):
-		place_pattern_container(attack_pattern)
 	
 	if attack_input != null:
-		play_attack_pattern(attack_pattern, attack_input)
+		if att_patt_agua.play_attack_pattern(attack_input):
+			Hero.attack(enemies[0], Elementos.Elems.Água)
+			UI.add_time(1)
+		if att_patt_fogo.play_attack_pattern(attack_input):
+			Hero.attack(enemies[0], Elementos.Elems.Fogo)
+			UI.add_time(1)
+		if att_patt_grama.play_attack_pattern(attack_input):
+			Hero.attack(enemies[0], Elementos.Elems.Grama)
+			UI.add_time(1)
 		
-	if current_att_pattern_pos < attack_pattern.size():
-		if attack_input != null and attack_input == attack_pattern[current_att_pattern_pos]:
-			current_att_pattern_pos += 1
-	else:
-		print("Ataque!")
-		Hero.attack()
-		UI.add_time(1)
-		current_att_pattern_pos = 0
+		
+		
+		
+class AttackPattern:
+	var attack_array : Array = []
+	var array_size : int
+	var attack_pattern_container : HBoxContainer
+	var current_attack_pos : int
+	
+	func _init(tamanho : int, attack_pattern_container : HBoxContainer):
+		attack_array.resize(tamanho)
+		array_size = tamanho
+		attack_array.fill(0)
+		self.attack_pattern_container = attack_pattern_container
+		current_attack_pos = 0
+		randomize_att_pattern()
+		place_pattern_container()
+	
+	func randomize_att_pattern() -> void:
+		var rng = RandomNumberGenerator.new()	
+		for i in range(array_size):
+			attack_array[i] = rng.randi_range(0, 3)
+		
+	func place_pattern_container() -> void:
+		_remove_all_children(attack_pattern_container)
+		for dir in attack_array:
+			match dir:
+				0:
+					attack_pattern_container.add_child(SETA_UP.instantiate())
+				1:
+					attack_pattern_container.add_child(SETA_LEFT.instantiate())
+				2:
+					attack_pattern_container.add_child(SETA_DOWN.instantiate())
+				3:
+					attack_pattern_container.add_child(SETA_RIGHT.instantiate())
+		self.current_attack_pos = 0		
+		
+	func play_attack_pattern(player_dir) -> bool:
+		if current_attack_pos < array_size:
+			if  player_dir == attack_array[current_attack_pos]:
+				var dir_icon_array = attack_pattern_container.get_children()
+				if dir_icon_array.size() > 0:
+					var curr_dir_icon : TextureRect = dir_icon_array[current_attack_pos]
+					curr_dir_icon.modulate = Color(2, 2, 2)
+				current_attack_pos += 1
+			else:
+				place_pattern_container()
+		
+		if current_attack_pos == array_size:
+			print("Attack!")
+			randomize_att_pattern()
+			self.place_pattern_container()
+			return true
+		return false
+		
+	func _remove_all_children(parent_node) -> void:
+		var children = parent_node.get_children()
+		for child in children:
+			parent_node.remove_child(child) # Detach from the scene tree
+			child.queue_free() # Safely delete and free memory	

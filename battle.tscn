@@ -68,17 +68,45 @@ offset_top = 480.0
 offset_right = 52.0
 offset_bottom = 480.0
 
-[node name="AttackPatternContainer" type="HBoxContainer" parent="UI"]
+[node name="Água Attack Pattern" type="HBoxContainer" parent="UI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 535.0
+offset_left = 506.0
 offset_top = 75.0
-offset_right = 1076.0
+offset_right = 1047.0
 offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fogo Attack Pattern" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 524.0
+offset_top = 217.0
+offset_right = 1065.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Grama Attack Pattern" type="HBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 514.0
+offset_top = 358.0
+offset_right = 1055.0
+offset_bottom = 429.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -95,6 +123,7 @@ scale = Vector2(4.1875, 4.1875)
 texture = ExtResource("7_0npn6")
 vframes = 2
 script = ExtResource("8_lcjiy")
+strength = 40
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hero"]
 libraries = {
@@ -104,3 +133,4 @@ autoplay = "Idle"
 
 [node name="Slime" parent="." instance=ExtResource("8_mhv3b")]
 position = Vector2(380, 305)
+total_life = 500.0

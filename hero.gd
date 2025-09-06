@@ -9,11 +9,22 @@ signal player_got_hit(damage)
 const ATTACK_ANIMATION_1 = preload("res://attack_animation1.tscn")
 const ATTACK_ANIMATION_2 = preload("res://attack_animation2.tscn")
 const ATTACK_ANIMATION_3 = preload("res://attack_animation3.tscn")
+
+const RUNE_FIRE = preload("res://Scenes/rune_fire.tscn")
+const RUNE_WATER = preload("res://Scenes/rune_water.tscn")
+const RUNE_GRASS = preload("res://Scenes/rune_grass.tscn")
+const RUNE_SHIELD = preload("res://Scenes/rune_shield.tscn")
+
 var attack_animation : AnimatedSprite2D
+var rune : Sprite2D
+
 signal has_killed_enemy
 
+<<<<<<< Updated upstream
 var is_defending : bool
 
+=======
+>>>>>>> Stashed changes
 func attack(enemy : Enemy, type : Elementos.Elems):
 	if enemy.hit(strength, type):
 		has_killed_enemy.emit()
@@ -21,12 +32,15 @@ func attack(enemy : Enemy, type : Elementos.Elems):
 	animated_sprite_2d.play("attack")
 	if type == Elementos.Elems.Água:
 		attack_animation = ATTACK_ANIMATION_1.instantiate()
+		rune = RUNE_WATER.instantiate()
 	elif type == Elementos.Elems.Fogo:
 		attack_animation = ATTACK_ANIMATION_2.instantiate()
+		rune = RUNE_FIRE.instantiate()
 	elif type == Elementos.Elems.Grama:
 		attack_animation = ATTACK_ANIMATION_3.instantiate()
+		rune = RUNE_GRASS.instantiate()
 	enemy.add_child(attack_animation)
-	#attack_animation.posiion.x -= 128
+	add_child(rune)
 	#await get_tree().create_timer(0.5).timeout
 	#attack_animation.queue_free()
 
@@ -44,7 +58,12 @@ func hit(damage):
 		
 	
 func defend():
+<<<<<<< Updated upstream
 	is_defending = true
+=======
+	rune = RUNE_SHIELD.instantiate()
+	add_child(rune)
+>>>>>>> Stashed changes
 	animated_sprite_2d.play("defend")
 	await get_tree().create_timer(1.0).timeout
 	animated_sprite_2d.play("default")

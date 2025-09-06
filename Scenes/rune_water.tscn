@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dabee1s4jfrrq"]
+
+[ext_resource type="Texture2D" uid="uid://c3exfj47q7fmt" path="res://art/rune_water.png" id="1_elhcm"]
+[ext_resource type="Script" uid="uid://c8d0dskpeiseu" path="res://Scripts/rune.gd" id="2_n75cr"]
+
+[node name="RuneWater" type="Sprite2D"]
+texture = ExtResource("1_elhcm")
+script = ExtResource("2_n75cr")

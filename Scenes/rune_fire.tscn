@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1wdsvwadp155"]
+
+[ext_resource type="Texture2D" uid="uid://d3tyoo7bpj63g" path="res://art/rune_fire.png" id="1_woqk5"]
+[ext_resource type="Script" uid="uid://c8d0dskpeiseu" path="res://Scripts/rune.gd" id="2_hgdre"]
+
+[node name="RuneFire" type="Sprite2D"]
+texture = ExtResource("1_woqk5")
+script = ExtResource("2_hgdre")

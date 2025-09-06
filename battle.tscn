@@ -1,10 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=13 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://d87dkpddn7j0" path="res://Rafael/cena-ui.tscn" id="2_i431l"]
 [ext_resource type="Script" uid="uid://omrjeon1uig2" path="res://Rafael/ui.gd" id="3_i431l"]
 [ext_resource type="PackedScene" uid="uid://xanlg4pmc8r7" path="res://keys.tscn" id="5_6t8i5"]
+[ext_resource type="PackedScene" uid="uid://bn4g5xx7o851n" path="res://timeline.tscn" id="6_dw4jg"]
+[ext_resource type="Texture2D" uid="uid://coogblbjnebnl" path="res://art/knight_idle.png" id="7_0npn6"]
+[ext_resource type="Script" uid="uid://cvw3wossls4k7" path="res://hero.gd" id="8_lcjiy"]
+[ext_resource type="PackedScene" uid="uid://ds35jghksgqni" path="res://slime.tscn" id="8_mhv3b"]
+
+[sub_resource type="Animation" id="Animation_mhv3b"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_lcjiy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ol6im"]
+_data = {
+&"Idle": SubResource("Animation_mhv3b"),
+&"RESET": SubResource("Animation_lcjiy")
+}
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_7sfm4")
@@ -22,3 +63,30 @@ starting_time = 10.0
 
 [node name="Keys" parent="UI" instance=ExtResource("5_6t8i5")]
 layout_mode = 1
+offset_left = 52.0
+offset_top = 480.0
+offset_right = 52.0
+offset_bottom = 480.0
+
+[node name="Timeline" parent="." instance=ExtResource("6_dw4jg")]
+offset_left = 372.0
+offset_top = 560.0
+offset_right = 372.0
+offset_bottom = 560.0
+
+[node name="Hero" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(290, 303)
+scale = Vector2(4.1875, 4.1875)
+texture = ExtResource("7_0npn6")
+vframes = 2
+script = ExtResource("8_lcjiy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hero"]
+libraries = {
+&"": SubResource("AnimationLibrary_ol6im")
+}
+autoplay = "Idle"
+
+[node name="Slime" parent="." instance=ExtResource("8_mhv3b")]
+position = Vector2(380, 305)

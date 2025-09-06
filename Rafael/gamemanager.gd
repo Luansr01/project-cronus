@@ -9,10 +9,9 @@ var UI : Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UI = get_node("UI")
+	slime = get_node("Slime")
 	current_att_pattern_pos = 0
 
-	
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

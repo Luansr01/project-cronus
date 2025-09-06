@@ -10,6 +10,7 @@ var cur_life: float
 
 var lifebar : ProgressBar
 var is_active = false
+signal enemy_has_died
 
 func _ready() -> void:
 	lifebar = get_node("ProgressBar")
@@ -23,6 +24,9 @@ func hit(dano_base: float, tipo : Elementos.Elems):
 	lifebar.value = cur_life
 	if cur_life <= 0:
 		self._die()
+		return true
+	return false
+		
 		
 func _die():
 	print("morri!")

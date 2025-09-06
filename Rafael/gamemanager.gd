@@ -27,8 +27,7 @@ var player_defendendo : bool
 @onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
 @onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
 
-# @onready var player_input_sfx: AudioStreamPlayer = $"Sound Effects/Player Input SFX"
-# @onready var player_attack_sfx: AudioStreamPlayer = $"Sound Effects/Player Attack SFX"
+var killed_enemy :bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -77,22 +76,25 @@ func _input(event: InputEvent) -> void:
 	if attack_input != null and targeted_enemy != null:
 		if att_patt_agua.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Água)
-			UI.add_time(1)
 			player_attack_sfx.play()
 		if att_patt_fogo.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Fogo)
-			UI.add_time(1)
 			player_attack_sfx.play()
 		if att_patt_grama.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Grama)
-			UI.add_time(1)
 			player_attack_sfx.play()
 		if att_patt_defesa.play_attack_pattern(attack_input):
 			player_defendendo = true	
 			Hero.defend()
 			print("Defesa!")
-			
 		
+			
+			
+func _on_hero_has_killed_enemy() -> void:
+	UI.add_time(5)
+	
+	
+	
 class AttackPattern:
 	var attack_array : Array = []
 	var array_size : int

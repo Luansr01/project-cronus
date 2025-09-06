@@ -11,16 +11,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3127u")
+speed = 0.01
+
+[node name="Line" type="HSeparator" parent="."]
+layout_mode = 0
+offset_right = 3.0
+offset_bottom = 64.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 100.0
-offset_right = 228.0
-offset_bottom = 128.0
-pivot_offset = Vector2(64, 64)
+offset_left = 144.0
+offset_right = 208.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
 texture = ExtResource("2_18enc")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 22.0
+offset_right = 86.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("2_18enc")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 271.0
+offset_right = 335.0
+offset_bottom = 64.0
+pivot_offset = Vector2(32, 32)
+texture = ExtResource("2_18enc")
+expand_mode = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

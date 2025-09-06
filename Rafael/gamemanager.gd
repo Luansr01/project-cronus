@@ -4,14 +4,15 @@ extends Node2D
 var current_att_pattern_pos
 var label_attack_pattern: Label
 var UI : Control
+@onready var slime: Enemy = $Slime
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UI = get_node("UI")
+	current_att_pattern_pos = 0
 
 	
-	current_att_pattern_pos = 0
-	pass # Replace with function body.
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

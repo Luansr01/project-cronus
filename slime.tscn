@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b64k466520khm"]
+
+[ext_resource type="Script" uid="uid://dpkheow0xlwtg" path="res://enemy_class.gd" id="1_5jc4t"]
+[ext_resource type="Texture2D" uid="uid://c50tduvjqi2f2" path="res://art/slime_idle.png" id="2_4l1t8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhv3b"]
+atlas = ExtResource("2_4l1t8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcjiy"]
+atlas = ExtResource("2_4l1t8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol6im"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhv3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcjiy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Slime" type="Node2D"]
+script = ExtResource("1_5jc4t")
+total_life = 100.0
+metadata/_custom_type_script = "uid://dpkheow0xlwtg"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ol6im")
+autoplay = "default"
+frame_progress = 0.573675

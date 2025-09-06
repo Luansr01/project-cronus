@@ -22,6 +22,21 @@ signal has_killed_enemy
 
 var is_defending : bool
 
+func intro():
+	animated_sprite_2d.play("drink")
+	await get_tree().create_timer(2).timeout 
+	rune = RUNE_FIRE.instantiate()
+	add_child(rune)
+	await get_tree().create_timer(.5).timeout
+	rune = RUNE_WATER.instantiate()
+	add_child(rune)
+	await get_tree().create_timer(.5).timeout
+	rune = RUNE_GRASS.instantiate()
+	add_child(rune)
+	await get_tree().create_timer(.5).timeout
+	animated_sprite_2d.play("default")
+	await get_tree().create_timer(1).timeout
+
 func attack(enemy : Enemy, type : Elementos.Elems):
 	if enemy.hit(strength, type):
 		has_killed_enemy.emit()

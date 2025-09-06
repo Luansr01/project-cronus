@@ -72,6 +72,8 @@ func _ready() -> void:
 	crosshair = get_node("Crosshair")
 	UI = get_node("UI")
 	Hero = get_node("Hero")
+	
+	await Hero.intro()
 
 	spawn_slimes(3)
 	

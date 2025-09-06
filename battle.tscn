@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=42 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bqtdm2eh2lc2j" path="res://art/sfx5.wav" id="14_4s0ev"]
 [ext_resource type="Shader" uid="uid://bh7ormae1eqf3" path="res://flash.gdshader" id="14_fljlq"]
 [ext_resource type="PackedScene" uid="uid://66epj0pbkpk2" path="res://tilemap.tscn" id="16_slotg"]
+[ext_resource type="Texture2D" uid="uid://4glga0x84uym" path="res://art/knight_potion.png" id="17_v7t3w"]
 [ext_resource type="Texture2D" uid="uid://c6wsqg1j2r15f" path="res://art/knight_death.png" id="18_s5g7e"]
 [ext_resource type="AudioStream" uid="uid://dbosjhs0ajxt8" path="res://art/hitHurt.wav" id="24_j128n"]
 [ext_resource type="AudioStream" uid="uid://c3rq6uox6gj8h" path="res://art/hitHurt (1).wav" id="25_nt5qs"]
@@ -52,6 +53,22 @@ region = Rect2(0, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bx4lf"]
 atlas = ExtResource("11_ix8ov")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in21c"]
+atlas = ExtResource("17_v7t3w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwl2g"]
+atlas = ExtResource("17_v7t3w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kmqj"]
+atlas = ExtResource("17_v7t3w")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfmjp"]
+atlas = ExtResource("17_v7t3w")
+region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j128n"]
 atlas = ExtResource("18_s5g7e")
@@ -88,6 +105,23 @@ animations = [{
 "loop": true,
 "name": &"defend",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in21c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwl2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kmqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfmjp")
+}],
+"loop": false,
+"name": &"drink",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -276,8 +310,10 @@ strength = 40
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hero"]
 material = SubResource("ShaderMaterial_s5g7e")
 sprite_frames = SubResource("SpriteFrames_slotg")
-animation = &"hit"
+animation = &"drink"
 autoplay = "default"
+frame = 3
+frame_progress = 1.0
 
 [node name="Sound Effects" type="Node" parent="."]
 

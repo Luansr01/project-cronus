@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d87dkpddn7j0"]
+[gd_scene load_steps=0 format=3 uid="uid://d87dkpddn7j0"]
 
 [node name="Cena-ui" type="Control"]
 layout_mode = 3

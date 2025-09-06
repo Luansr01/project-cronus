@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlciqwi2nw5fi"]
+[gd_scene load_steps=5 format=3 uid="uid://dlciqwi2nw5fi"]
 
 [ext_resource type="Script" uid="uid://j6qth7vv03iq" path="res://Rafael/gamemanager.gd" id="1_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://dlu11roa84dnc" path="res://lifetime.tscn" id="2_7sfm4"]
 [ext_resource type="PackedScene" uid="uid://d87dkpddn7j0" path="res://Rafael/cena-ui.tscn" id="2_i431l"]
+[ext_resource type="Script" uid="uid://omrjeon1uig2" path="res://Rafael/ui.gd" id="3_i431l"]
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_7sfm4")
 
-[node name="Cena-ui" parent="." instance=ExtResource("2_i431l")]
+[node name="UI" parent="." instance=ExtResource("2_i431l")]
+script = ExtResource("3_i431l")
 
-[node name="Label" type="Label" parent="Cena-ui"]
+[node name="Label" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 486.0
 offset_top = 307.0

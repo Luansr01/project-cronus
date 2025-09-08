@@ -83,10 +83,10 @@ func _ready() -> void:
 	
 	targeted_enemy = enemies[0]
 			
-	att_patt_agua =  AttackPattern.new(4, agua_attack_container)
-	att_patt_fogo =  AttackPattern.new(4, fogo_attack_container)
-	att_patt_grama =  AttackPattern.new(4, grama_attack_container)
-	att_patt_defesa = AttackPattern.new(3, defesa_attack_pattern)
+	att_patt_agua =  AttackPattern.new(3, agua_attack_container)
+	att_patt_fogo =  AttackPattern.new(3, fogo_attack_container)
+	att_patt_grama =  AttackPattern.new(3, grama_attack_container)
+	att_patt_defesa = AttackPattern.new(2, defesa_attack_pattern)
 	player_defendendo = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -124,16 +124,24 @@ func _input(event: InputEvent) -> void:
 	if attack_input != null and targeted_enemy != null:
 		if att_patt_agua.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Água)
+			player_attack_sfx.stream = preload("res://683180__neartheatmoshphere__iceball.wav")
+			player_attack_sfx.volume_db = -8
 			player_attack_sfx.play()
 		if att_patt_fogo.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Fogo)
+			player_attack_sfx.stream = preload("res://508834__mrthenoronha__fire-2-8-bit.wav")
+			player_attack_sfx.volume_db = -10
 			player_attack_sfx.play()
 		if att_patt_grama.play_attack_pattern(attack_input):
 			Hero.attack(targeted_enemy, Elementos.Elems.Grama)
+			player_attack_sfx.stream = preload("res://hitHurt (2).wav")
+			player_attack_sfx.volume_db = -2
 			player_attack_sfx.play()
 		if att_patt_defesa.play_attack_pattern(attack_input):
 			player_defendendo = true	
 			Hero.defend()
+			player_attack_sfx.stream = preload("res://art/sfx5.wav")
+			player_attack_sfx.volume_db = 0
 			player_attack_sfx.play()
 
 		
@@ -205,7 +213,7 @@ class AttackPattern:
 
 
 func _on_slime_enemy_died(enemy: Variant) -> void:
-		UI.add_time(10)
+		UI.add_time(5)
 		score += 10
 		enemies.erase(enemy)
 		if not enemies.is_empty():

@@ -380,7 +380,8 @@ layout_mode = 0
 offset_top = 412.0
 offset_right = 1153.0
 offset_bottom = 473.0
-theme_override_font_sizes/normal_font_size = 30
+theme_override_fonts/normal_font = ExtResource("11_5kmqj")
+theme_override_font_sizes/normal_font_size = 32
 text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -416,6 +417,7 @@ max_polyphony = 5
 
 [node name="Player Attack SFX" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = ExtResource("14_4s0ev")
+volume_db = -2.29
 
 [node name="Enemy Death SFX" type="AudioStreamPlayer" parent="Sound Effects"]
 stream = SubResource("AudioStreamRandomizer_nt5qs")
